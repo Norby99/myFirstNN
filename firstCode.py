@@ -1,5 +1,6 @@
 import numpy as np
 import nnfs
+from nnfs.datasets import spiral_data
 
 class Layer_Dense:
 
@@ -10,5 +11,11 @@ class Layer_Dense:
 
 
 
-    def forward():
-        pass
+    def forward(self, inputs):
+        self.output = np.dot(inputs, self.weights) + self.biases
+
+
+x, y = spiral_data(samples=100, classes=3)
+dense1 = Layer_Dense(2, 3)  #creo uno strato di NN di dimensione 2 x 3
+dense1.forward(x)
+print(dense1.output[:5])
